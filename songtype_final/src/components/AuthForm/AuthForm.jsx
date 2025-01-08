@@ -190,6 +190,7 @@ import React, { useState } from "react";
 import { useNavigate, Link } from "react-router-dom";
 import { toast } from "react-toastify";
 import { loginUserApi } from "../../Api/Api";
+import { AuthContext, useAuthContext } from "../../context/AuthContext";
 
 const AuthForm = () => {
   const [email, setEmail] = useState("");
@@ -200,6 +201,7 @@ const AuthForm = () => {
   const [isSubmitting, setIsSubmitting] = useState(false);
 
   const navigate = useNavigate();
+  const { loginUser } = useAuthContext(AuthContext);
 
   const validate = () => {
     let isValid = true;
@@ -235,9 +237,11 @@ const AuthForm = () => {
         toast.success(res.data.message);
 
         //store token and user details
-        localStorage.setItem("token", res.data.token);
+        // localStorage.setItem("token", res.data.token);
         const userData = res.data.userData;
-        localStorage.setItem("user", JSON.stringify(userData));
+        // localStorage.setItem("user", JSON.stringify(userData));
+
+        loginUser(userData, res.data.token);
 
         //redirect based on role or de3fault to home page
         if (userData.role === "Admin") {
@@ -257,20 +261,19 @@ const AuthForm = () => {
   return (
     <div
       className="min-h-screen w-full flex items-center justify-center bg-cover bg-center relative"
-      style={{
-        backgroundImage:
-          "url(https://images.unsplash.com/photo-1519617645840-a29e3d3656c1?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D)",
-      }}
+      // style={{
+      //   backgroundImage:
+      //     "url(https://images.unsplash.com/photo-1519617645840-a29e3d3656c1?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D)",
+      // }}
     >
-      <div className="absolute bottom-0 w-full h-96 bg-gradient-to-t from-black to-transparent"></div>
+      {/* <div className="absolute bottom-0 w-full h-96 bg-gradient-to-t from-black to-transparent"></div> */}
 
-      <div className="w-full max-w-md p-8 space-y-6 relative z-10">
+      <div className="w-full max-w-md p-8 space-y-6 relative ">
         <div className="text-center">
           <h1 className="text-3xl font-bold text-white mb-8">Welcome back</h1>
         </div>
 
         <form className="space-y-4" onSubmit={handleLogin}>
-          //login
           <div>
             <input
               type="email"
@@ -283,7 +286,6 @@ const AuthForm = () => {
               <p className="mt-1 text-xs text-red-500">{emailError}</p>
             )}
           </div>
-          //password
           <div>
             <input
               type="password"

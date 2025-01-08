@@ -12,8 +12,25 @@ export const AuthContextProvider = ({ children }) => {
   const [authUser, setAuthUser] = useState(
     JSON.parse(localStorage.getItem("user")) || null
   );
+
+  // Function to handle user login
+  const loginUser = (user, token) => {
+    setAuthUser(user);
+    localStorage.setItem("user", JSON.stringify(user));
+    localStorage.setItem("token", token);
+  };
+
+  // Function to handle user logout
+  const logoutUser = () => {
+    setAuthUser(null);
+    localStorage.removeItem("user");
+    localStorage.removeItem("token");
+  };
+
   return (
-    <AuthContext.Provider value={{ authUser, setAuthUser }}>
+    <AuthContext.Provider
+      value={{ authUser, setAuthUser, loginUser, logoutUser }}
+    >
       {children}
     </AuthContext.Provider>
   );

@@ -67,16 +67,16 @@ const SignUpPage = () => {
   return (
     <div
       className="min-h-screen w-full flex items-center justify-center bg-cover bg-center bg-no-repeat relative"
-      style={{
-        backgroundImage:
-          "url('https://images.unsplash.com/photo-1429305336325-b84ace7eba3b?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D')",
-      }}
+      // style={{
+      //   backgroundImage:
+      //     "url('https://images.unsplash.com/photo-1429305336325-b84ace7eba3b?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D')",
+      // }}
     >
       {/* Mountains - Using a dark overlay gradient */}
-      <div className="absolute bottom-0 w-full h-96 bg-gradient-to-t from-black to-transparent"></div>
+      {/* <div className="absolute bottom-0 w-full h-96 bg-gradient-to-t from-black to-transparent"></div> */}
 
       {/* Sign Up Form Container */}
-      <div className="w-full max-w-md p-8 space-y-6 relative z-10">
+      <div className="w-full max-w-md p-8 space-y-6 relative ">
         <div className="text-center">
           <h1 className="text-3xl font-bold text-white mb-8">Create Account</h1>
         </div>
