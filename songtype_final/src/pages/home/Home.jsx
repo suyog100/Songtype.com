@@ -28,6 +28,7 @@ const Home = () => {
   return (
     <section className="typing-app">
       {isMobile ? <MobileOptions /> : <Options />}
+
       <TypingArea />
       <Results />
     </section>

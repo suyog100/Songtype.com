@@ -27,7 +27,6 @@ function App() {
         <Route path="/leaderboard" element={<Leaderboard />} />
         <Route path="/signup" element={<SignUpPage />} />
         <Route path="/login" element={<Login />} />
-        {/* <Route path ="/profile" element={<Profile />} /> */}
 
         {/* error route */}
         <Route path="*" element={<Navigate to="/dashboard" />} />
