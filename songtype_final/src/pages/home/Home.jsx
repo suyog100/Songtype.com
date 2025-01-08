@@ -1,3 +1,4 @@
+import AddSong from "../../components/AddSong";
 import MobileOptions from "../../components/GameModeOptions/MobileOptions/MobileOptions";
 import Options from "../../components/GameModeOptions/Options";
 import Results from "../../components/Results";
@@ -27,8 +28,8 @@ const Home = () => {
 
   return (
     <section className="typing-app">
+      <AddSong />
       {isMobile ? <MobileOptions /> : <Options />}
-
       <TypingArea />
       <Results />
     </section>
